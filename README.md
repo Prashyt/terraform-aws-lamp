@@ -1,4 +1,4 @@
-# aws-terraform-ansible-lamp Assignment
+# aws-terraform-ansible-lamp assignment
 
 Cloud Provider : AWS
 Operating System used :  Amazon Linux
