@@ -1,41 +1,66 @@
-# aws-terraform-ansible-lamp assignment
+# Automation of a LAMP Stack on AWS
 
-Cloud Provider : AWS
+This project provides a base template to deploy a web-based application on a LAMP stack. The solution is based off Hashicorp's terraform for cloud resources provisioning. It deploys an Amazon Linux EC2 Instance followed by installation of Ansible for Configuration management, Pip for package management, Apache for Webserver and MariaDB for database on a single EC2 Instance
 
-Operating System used :  Amazon Linux
+## Getting Started
 
-Pre-requisite
+Fork or Copy this repo locally in your file system and follow these instructions to get up and running on your local machine for development purposes.
 
-In main.tf update the following
------------
+### Prerequisites
+
+- terraform - Download the latest version using your local package manager like Homebrew on Mac or Chocolatey on Windows.
+- aws account - A Amazon Web Services account with IAM permissions to provision resources.
+
+```
+brew install terraform
+choco install terraform --pre
+```
+
+### Setup AWS Credentials
+
+Using Terminal/CMD line navigate to the repository folder and set your environment variable with your AWS Credentials.
+
+```
+export AWS_ACCESS_KEY_ID= <your access key id>
+
+export AWS_SECRET_ACCESS_KEY= <your secret access key>
+
+export AWS_DEFAULT_REGION=ap-southeast-2 
+
+```
+
+### Modify the code
+
+Modify the following variables in the configuration file for your environment
+
+#### main.tf file
+
 subnet_id = "subnet-94a51bdf"
 
 vpc_id    = "vpc-f052e488"
 
 subnets   = "subnet-eb5ba68e"
 
-In vars.tf update the following
- ----------
- default = "/home/ec2-user/lamp.pem"
- 
- default = "devec2-keypair"
+#### vars.tf file
 
-To run
-========
+default = "/home/ec2-user/lamp.pem"
 
-Install Terraform and perform the following commands
-https://www.terraform.io/downloads.html
+default = "devec2-keypair"
 
-Setup AWS Account in the Terminal/CLI tool used
 
-Example below for MacOS
+## Provisioning and Deployment
 
-export AWS_ACCESS_KEY_ID=
+To deploy the project run the following command and enter "yes" upon the prompt confirming the deployment scope.
 
-export AWS_SECRET_ACCESS_KEY=
+```
+terraform apply
+```
+## Testing
 
-export AWS_DEFAULT_REGION=ap-southeast-2 
+Upon successful deployment, you will receive an output providing DNS of the Elastic Loadbalancer. Please wait for at least 5 mins for all services to come up and the DNS to point to the EC2 Instance.
 
-Navigate to Directory and run "terraform apply" to build the env
+Enter the ELB's DNS in your local browser or provide a curl command to view the webpage and database connection
 
-Navigate to Directory and run "terraform destroy" to terminate and deprovision all resources
+## Authors
+
+* [Prashit](http://www.prashit.cloud)
