@@ -9,7 +9,9 @@ Fork or Copy this repo locally in your file system and follow these instructions
 ### Prerequisites
 
 - terraform - Download the latest version using your local package manager like Homebrew on Mac or Chocolatey on Windows.
-- aws account - A Amazon Web Services account with IAM permissions to provision resources.
+- aws account - An Amazon Web Services account with IAM permissions to provision resources.
+- vpc information - Obtain the default VPC ID and Subnet ID
+- key pair - Generate a key pair on your local machine or in AWS EC2 Console
 
 ```
 brew install terraform
@@ -35,18 +37,27 @@ Modify the following variables in the configuration file for your environment
 
 #### main.tf file
 
+```
 subnet_id = "subnet-94a51bdf"
+```
 
+```
 vpc_id    = "vpc-f052e488"
+```
 
+```
 subnets   = "subnet-eb5ba68e"
+```
 
 #### vars.tf file
 
+```
 default = "/home/ec2-user/lamp.pem"
+```
 
+```
 default = "devec2-keypair"
-
+```
 
 ## Provisioning and Deployment
 
