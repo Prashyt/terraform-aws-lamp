@@ -147,7 +147,7 @@ listener {
   connection_draining_timeout = 400
 }
 
-output "aws_elb" {
+output "lamp-elb-dns" {
   description = "The DNS name of the ELB"
-  value       = "${module.elb.aws_elb}"
+  value       = "${element(concat(aws_elb.web.*.dns_name, list("")), 0)}"
 }
