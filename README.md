@@ -4,7 +4,8 @@ Cloud Provider : AWS
 
 Operating System used :  Amazon Linux
 
-Prerequisite
+Pre-requisite
+
 In main.tf update the following
 -----------
 subnet_id = "subnet-94a51bdf"
@@ -34,3 +35,7 @@ export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 
 export AWS_DEFAULT_REGION=ap-southeast-2 
+
+Navigate to Directory and run "terraform apply" to build the env
+
+Navigate to Directory and run "terraform destroy" to terminate and deprovision all resources
