@@ -1,0 +1,38 @@
+<html>
+<head>
+       <title>LAMP Automation Terraform  and  Ansible Demo</title>
+</head>
+<body>
+    <h3>
+        LAMP Automation Terraform and Ansible Demo by Prashit.
+    </h3>
+    <h4>
+        My IP Address is {{ ansible_eth0.ipv4.address }}.
+    </h4>
+    <h5>
+        This is {{ ansible_system }} OS with {{ ansible_userspace_architecture }} architecture
+    </h5>
+
+    <h6>
+         Connecting to Database ...
+     </h6>
+
+    <p>
+
+        <strong>List of Databases:</strong> <br/>
+    <?php
+
+    $dbobj = mysql_connect('{{ ansible_lo.ipv4.address }}', '{{ dbuser }}', '{{ dbpassword }}');
+    if (!$dbobj) { die('Could not connect: ' . mysql_error()); }
+
+    $result = mysql_query("SHOW DATABASES");
+    while ($res = mysql_fetch_assoc($result)){
+        echo $res['Database'] . "<br/>";
+    }
+
+    ?>
+    </p>
+    <br/>
+    <p><alt="Vibrato Lab"></p>
+</body>
+</html>
